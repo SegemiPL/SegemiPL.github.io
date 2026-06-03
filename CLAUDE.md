@@ -6,7 +6,7 @@ See `AGENTS.md` for the canonical project overview (directory table, CI, etc.). 
 
 ## What this repo is
 
-Personal static blog built with **Zensical** (Material-for-MkDocs-style generator) deployed to GitHub Pages at `https://zhangpl24.github.io/`. UI language is Chinese (`language = "zh"`). Sole config is `zensical.toml`; content lives in `docs/`.
+Personal static blog built with **Zensical** (Material-for-MkDocs-style generator) deployed to GitHub Pages at `https://SegemiPL.github.io/`. UI language is Chinese (`language = "zh"`). Sole config is `zensical.toml`; content lives in `docs/`.
 
 ## Commands
 

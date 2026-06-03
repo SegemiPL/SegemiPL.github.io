@@ -7,8 +7,8 @@
 - **类型**：个人静态博客 / 文档站。
 - **生成器**：[Zensical](https://zensical.org/)（类 MkDocs Material 体验，配置为 `zensical.toml`）。
 - **内容语言**：站点界面语言为中文（`language = "zh"`），文章以 Markdown 为主。
-- **线上地址**：`https://zhangpl24.github.io/`（`site_url` 与 GitHub Pages 用户站一致）。
-- **源码仓库**：`https://github.com/zhangpl24/zhangpl24.github.io`（`repo_url` / `repo_name`）。
+- **线上地址**：`https://SegemiPL.github.io/`（`site_url` 与 GitHub Pages 用户站一致）。
+- **源码仓库**：`https://github.com/SegemiPL/SegemiPL.github.io`（`repo_url` / `repo_name`）。
 
 ## 目录结构（重要）
 

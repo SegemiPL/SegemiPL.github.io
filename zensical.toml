@@ -11,7 +11,7 @@
 # The site_name is shown in the page header and the browser window title
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
-site_name = "zhangpl24 的博客"
+site_name = "SegemiPL 的博客"
 
 # The site_description is included in the HTML head and should contain a
 # meaningful description of the site content for use by search engines.
@@ -22,15 +22,15 @@ site_description = "基于 Zensical 与 GitHub Pages 的个人博客。"
 # The site_author attribute. This is used in the HTML head element.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_author
-site_author = "zhangpl24"
+site_author = "SegemiPL"
 
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-site_url = "https://zhangpl24.github.io/"
+site_url = "https://SegemiPL.github.io/"
 
-repo_url = "https://github.com/zhangpl24/zhangpl24.github.io"
-repo_name = "zhangpl24/zhangpl24.github.io"
+repo_url = "https://github.com/SegemiPL/SegemiPL.github.io"
+repo_name = "SegemiPL/SegemiPL.github.io"
 edit_uri = "edit/main/docs/"
 
 # The copyright notice appears in the page footer and can contain an HTML
@@ -38,7 +38,7 @@ edit_uri = "edit/main/docs/"
 #
 # Read more: https://zensical.org/docs/setup/basics/#copyright
 copyright = """
-Copyright &copy; 2026 zhangpl24
+Copyright &copy; 2026 SegemiPL
 """
 
 # Zensical supports both implicit navigation and explicitly defined navigation.
