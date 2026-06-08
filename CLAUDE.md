@@ -50,11 +50,9 @@ Valid types: `note`, `abstract`, `tip`, `info`, `success`, `question`, `warning`
 
 ## Math (MathJax)
 
-**There is no site-wide math config.** Any page that uses `$...$` / `$$...$$` must inject MathJax itself — via a `<script>` block at the top of the `.md` file (under the frontmatter). See `docs/概统/函数分布.md` for the canonical pattern. Requirements:
+MathJax is configured site-wide in `docs/javascripts/extra.js`, which is loaded via `extra_javascript` in `zensical.toml`. Pages should write math directly with `$...$` / `$$...$$`; do not paste per-page MathJax `<script>` blocks into notes.
 
-- Configure `MathJax.tex.inlineMath`/`displayMath` to accept both `$...$` and `\(...\)`.
-- Hook `document$.subscribe(typeset)` — Zensical has `navigation.instant` enabled, so without this math only renders on first load and breaks after any in-site navigation.
-- Set `ignoreHtmlClass: "no-mathjax"` to keep MathJax out of code blocks.
+The site-wide module configures `MathJax.tex.inlineMath`/`displayMath`, hooks `document$.subscribe(typeset)` for Zensical instant navigation, and sets `ignoreHtmlClass: "no-mathjax"` to keep MathJax out of code blocks.
 
 ## Theme overrides
 
@@ -62,7 +60,9 @@ Valid types: `note`, `abstract`, `tip`, `info`, `success`, `question`, `warning`
 
 ## Importing from Obsidian (`~/Documents/Obsidian Vault`)
 
-Use `scripts/obsidian_import.py` for the mechanical transforms (frontmatter strip, attachment rename+copy, wikilink/callout rewrite, MathJax injection). Unit tests live alongside it: `python3 scripts/test_obsidian_import.py`.
+Use `scripts/obsidian_import.py` for the mechanical transforms (frontmatter strip, attachment rename+copy, wikilink/callout rewrite, page metadata helpers, card rendering helpers). Unit tests live alongside it: `python3 scripts/test_obsidian_import.py`.
+
+`scripts/` is tracked source. Put machine-local script configuration under `scripts/local/` if needed.
 
 ```bash
 # A whole topic folder
@@ -94,4 +94,4 @@ python3 scripts/obsidian_import.py <source> <Topic> --dry-run
 - `![[Attachment/X|n]]` → `![stem](../assets/<topic-slug>/<slug>.ext)`; drops `|width`; copies and renames the asset.
 - `[[Note]]` / `[[Note|Display]]` → `[Display](../Note/)` (URL-encoded); `[[foo.pdf#page=2|Text]]` → plain `Text`.
 - `> [!type](+/-)? 标题` → `!!! / ???+ / ??? <type> "标题"`, body indented 4 spaces.
-- When `$...$` or `$$...$$` appears outside code, injects the MathJax `<script>` block (see **Math** section above).
+- Math remains inline; rendering is handled by the site-wide MathJax module in `docs/javascripts/extra.js`.

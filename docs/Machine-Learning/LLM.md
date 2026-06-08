@@ -3,39 +3,6 @@ date: 2026-05-28
 icon: lucide/brain-circuit
 description: 循环神经网络的核心思想：循环使得信息可以从当前步传递到下一步，可看作同一个神经网络的多次复制
 ---
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [["$", "$"], ["\\(", "\\)"]],
-      displayMath: [["$$", "$$"], ["\\[", "\\]"]],
-      processEscapes: true,
-      processEnvironments: true,
-      tags: "none"
-    },
-    options: {
-      ignoreHtmlClass: "no-mathjax",
-      processHtmlClass: "arithmatex"
-    },
-    svg: { fontCache: "global" }
-  };
-</script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script>
-  (function () {
-    function typeset() {
-      if (window.MathJax && window.MathJax.typesetPromise) {
-        window.MathJax.typesetPromise();
-      }
-    }
-    if (typeof document$ !== "undefined" && document$.subscribe) {
-      document$.subscribe(typeset);
-    } else if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", typeset);
-    } else {
-      typeset();
-    }
-  })();
-</script>
 
 # LLM
 

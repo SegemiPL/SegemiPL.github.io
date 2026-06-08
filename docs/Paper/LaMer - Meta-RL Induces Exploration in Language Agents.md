@@ -3,39 +3,6 @@ date: 2026-04-26
 icon: lucide/scroll-text
 description: LaMer 用 meta-RL 的跨 episode 信用分配 + 自反思内环上下文适应，在无需梯度更新的情况下诱导 LLM agent 主动探索。
 ---
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [["$", "$"], ["\\(", "\\)"]],
-      displayMath: [["$$", "$$"], ["\\[", "\\]"]],
-      processEscapes: true,
-      processEnvironments: true,
-      tags: "none"
-    },
-    options: {
-      ignoreHtmlClass: "no-mathjax",
-      processHtmlClass: "arithmatex"
-    },
-    svg: { fontCache: "global" }
-  };
-</script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script>
-  (function () {
-    function typeset() {
-      if (window.MathJax && window.MathJax.typesetPromise) {
-        window.MathJax.typesetPromise();
-      }
-    }
-    if (typeof document$ !== "undefined" && document$.subscribe) {
-      document$.subscribe(typeset);
-    } else if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", typeset);
-    } else {
-      typeset();
-    }
-  })();
-</script>
 
 # 论文阅读笔记 — LaMer 用 meta-RL 的跨 episode 信用分配 + 自反思内环上下文适应，在无需梯度更新的情况下诱导 LLM agent 主动探索
 

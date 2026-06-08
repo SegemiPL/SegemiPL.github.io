@@ -22,6 +22,7 @@
 | `docs/assets/` | 图片等静态资源（按主题分子目录，如 `docs/assets/hpc/`）。 |
 | `docs/*.md` | 根目录独立页面（可选）。 |
 | `site/` | **构建输出**（`zensical build` 生成）。已列入 `.gitignore`，一般不入库；CI 在干净环境中生成并上传。 |
+| `scripts/` | Obsidian 导入、批量导入、内容卡片/元数据辅助与测试脚本。脚本本身入库；机器本地配置放 `scripts/local/`。 |
 | `.github/workflows/docs.yml` | GitHub Actions：推送 `main`/`master` 时安装 Zensical、构建、部署到 GitHub Pages。 |
 | `.venv/` | 本地 Python 虚拟环境（已忽略）。 |
 
@@ -59,7 +60,7 @@ zensical build --clean
 
 - 主题 variant 默认 **modern**（`[project.theme]` 中 `variant = "classic"` 被注释）。
 - `extra_css` / `extra_javascript`、`custom_dir`（模板覆盖）、`logo` / `favicon` 等均在 `zensical.toml` 中留有注释说明，可按官方文档启用。
-- 数学公式：`docs/index.md` 中通过页面内 `<script>` 引入 MathJax 作为示例；全站数学需按 Zensical 文档统一配置。
+- 数学公式：全站 MathJax 配置在 `docs/javascripts/extra.js`，通过 `zensical.toml` 的 `extra_javascript` 加载；文章中直接写 `$...$` / `$$...$$`，不要逐页粘贴 MathJax 脚本。
 
 ## 与 AI 协作时的注意点
 

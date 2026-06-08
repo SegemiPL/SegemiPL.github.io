@@ -3,39 +3,6 @@ date: 2026-04-26
 icon: lucide/scroll-text
 description: ExpRAG 用检索增强 + 经验学习机制，让 LLM agent 从历史交互中持续学习和改进。
 ---
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [["$", "$"], ["\\(", "\\)"]],
-      displayMath: [["$$", "$$"], ["\\[", "\\]"]],
-      processEscapes: true,
-      processEnvironments: true,
-      tags: "none"
-    },
-    options: {
-      ignoreHtmlClass: "no-mathjax",
-      processHtmlClass: "arithmatex"
-    },
-    svg: { fontCache: "global" }
-  };
-</script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script>
-  (function () {
-    function typeset() {
-      if (window.MathJax && window.MathJax.typesetPromise) {
-        window.MathJax.typesetPromise();
-      }
-    }
-    if (typeof document$ !== "undefined" && document$.subscribe) {
-      document$.subscribe(typeset);
-    } else if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", typeset);
-    } else {
-      typeset();
-    }
-  })();
-</script>
 
 # 论文阅读笔记 — ExpRAG：检索增强的LLM智能体
 

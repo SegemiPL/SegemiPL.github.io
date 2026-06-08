@@ -1,3 +1,46 @@
+/* 全站 MathJax：页面只写数学，渲染行为集中在这里 */
+(function () {
+  if (window.__zenMathJaxInit) return;
+  window.__zenMathJaxInit = true;
+
+  window.MathJax = {
+    tex: {
+      inlineMath: [["$", "$"], ["\\(", "\\)"]],
+      displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+      processEscapes: true,
+      processEnvironments: true,
+      tags: "none",
+    },
+    options: {
+      ignoreHtmlClass: "no-mathjax",
+      processHtmlClass: "arithmatex",
+    },
+    svg: { fontCache: "global" },
+    startup: {
+      pageReady: function () {
+        return window.MathJax.startup.defaultPageReady().then(typesetOnNavigation);
+      },
+    },
+  };
+
+  function typeset() {
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  }
+
+  function typesetOnNavigation() {
+    if (typeof document$ !== "undefined" && document$.subscribe) {
+      document$.subscribe(typeset);
+    }
+  }
+
+  var script = document.createElement("script");
+  script.async = true;
+  script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+  document.head.appendChild(script);
+})();
+
 /* 与 instant navigation 配合：每次文档切换后重播主内容入场动画 */
 (function () {
   function replayContentEnter() {

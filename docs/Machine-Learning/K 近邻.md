@@ -4,39 +4,6 @@ icon: lucide/locate
 description: 基于实例的学习、KNN 算法、距离度量与归一化、KD-Tree、距离加权 KNN 与局部加权回归。
 ---
 
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [["$", "$"], ["\\(", "\\)"]],
-      displayMath: [["$$", "$$"], ["\\[", "\\]"]],
-      processEscapes: true,
-      processEnvironments: true,
-      tags: "none"
-    },
-    options: {
-      ignoreHtmlClass: "no-mathjax",
-      processHtmlClass: "arithmatex"
-    },
-    svg: { fontCache: "global" }
-  };
-</script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script>
-  (function () {
-    function typeset() {
-      if (window.MathJax && window.MathJax.typesetPromise) {
-        window.MathJax.typesetPromise();
-      }
-    }
-    if (typeof document$ !== "undefined" && document$.subscribe) {
-      document$.subscribe(typeset);
-    } else if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", typeset);
-    } else {
-      typeset();
-    }
-  })();
-</script>
 
 # K 近邻 (KNN) 与基于实例的学习
 
