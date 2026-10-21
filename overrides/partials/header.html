@@ -1,0 +1,43 @@
+{# Keep Zensical's header, palette and search hooks for instant navigation. #}
+<header class="md-header zen-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="主导航">
+    <button class="md-header__button md-icon zen-menu-button" type="button" aria-label="打开导航" aria-controls="zen-navigation" aria-expanded="false" data-zen-menu>
+      {% include ".icons/lucide/menu.svg" %}
+    </button>
+    <a href="{{ nav.homepage.url | url }}" class="zen-brand" aria-label="SegemiPL 首页" data-md-component="logo">
+      <img src="{{ 'assets/identity/avatar.png' | url }}" width="32" height="32" alt="">
+      <span>SegemiPL<span class="zen-brand__dot">.</span></span>
+    </a>
+    <div class="md-header__title zen-header-title" data-md-component="header-title">
+      <div class="md-header__ellipsis"><div class="md-header__topic">{{ config.site_name }}</div><div class="md-header__topic" data-md-component="header-topic">{{ page.title }}</div></div>
+    </div>
+    <div class="zen-site-nav">
+      {% for item in nav.items %}
+        {% if item.children %}
+          <details class="zen-nav-group">
+            <summary>{{ item.title }} <span class="zen-icon">{% include ".icons/lucide/chevron-down.svg" %}</span></summary>
+            <div class="zen-nav-dropdown">
+              {% for child in item.children %}
+                <a href="{{ child.url | url }}">{{ child.title }}</a>
+              {% endfor %}
+            </div>
+          </details>
+        {% else %}
+          <a href="{{ item.url | url }}" {% if item.active %}aria-current="page"{% endif %}>{{ item.title }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="zen-header-tools">
+      {% if "search" in config.plugins and config.plugins["search"].config.enabled %}
+        {% include "partials/search.html" %}
+        <button class="zen-mobile-search zen-icon" type="button" aria-label="搜索文章" data-zen-search>{% include ".icons/lucide/search.svg" %}</button>
+      {% endif %}
+      <button class="zen-theme-button zen-icon" type="button" aria-label="切换到深色模式" data-zen-theme>
+        <span class="zen-theme-light">{% include ".icons/lucide/sun.svg" %}</span>
+        <span class="zen-theme-dark">{% include ".icons/lucide/moon.svg" %}</span>
+      </button>
+      <div class="zen-native-palette" hidden>{% include "partials/palette.html" %}</div>
+      {% include "partials/javascripts/palette.html" %}
+    </div>
+  </nav>
+</header>

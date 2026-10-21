@@ -20,6 +20,11 @@
 | `docs/blog/` | 博客短文、随笔等（非课程类）；`docs/blog/index.md` 为列表页。 |
 | `docs/<主题>/` | 按主题分目录的笔记（如 `docs/hpc/` 对应高性能计算课程），各目录内可有 `index.md` 作索引。 |
 | `docs/assets/` | 图片等静态资源（按主题分子目录，如 `docs/assets/hpc/`）。 |
+| `docs/assets/identity/` | 本站头像与 favicon；头像为作者的 GitHub 头像本地副本。 |
+| `docs/about.md` | 关于作者与联系方式。 |
+| `overrides/` | Zensical 模板覆盖：`main.html` 公共页脚，`home.html` 首页，`partials/` 导航、文章元信息与目录。 |
+| `docs/stylesheets/extra.css` | 全站视觉样式、深浅色设计变量与响应式布局。 |
+| `docs/javascripts/extra.js` | MathJax、主题切换、导航状态、移动端菜单与阅读时间。 |
 | `docs/*.md` | 根目录独立页面（可选）。 |
 | `site/` | **构建输出**（`zensical build` 生成）。已列入 `.gitignore`，一般不入库；CI 在干净环境中生成并上传。 |
 | `scripts/` | Obsidian 导入、批量导入、内容卡片/元数据辅助与测试脚本。脚本本身入库；机器本地配置放 `scripts/local/`。 |
@@ -58,8 +63,11 @@ zensical build --clean
 
 ## 自定义与扩展（当前状态）
 
-- 主题 variant 默认 **modern**（`[project.theme]` 中 `variant = "classic"` 被注释）。
-- `extra_css` / `extra_javascript`、`custom_dir`（模板覆盖）、`logo` / `favicon` 等均在 `zensical.toml` 中留有注释说明，可按官方文档启用。
+- 主题保留 **modern** 的搜索、即时导航、代码复制与目录能力；通过 `overrides/` 和 `extra.css` 提供个人博客布局。日间为暖白与低饱和橙色，夜间为深灰绿。
+- `extra_css`、`extra_javascript`、`custom_dir`、`logo` 和 `favicon` 已在 `zensical.toml` 中启用。
+- 首页由 `docs/index.md` 的 `template: home.html` 选择模板；精选文章和主题入口在该文件的 `featured` / `notebooks` frontmatter 中维护。嵌套的日期必须写成带引号的字符串（如 `date: "2026-05-28"`），兼容 Zensical 0.0.28 的元数据转换。
+- 顶栏从 `zensical.toml` 的 `nav` 生成；课程与工具收在「笔记」下拉菜单中，手机端使用主题原生抽屉。`zen-post-list` / `zen-post-card` 仍供导入脚本生成主题索引使用。
+- 博客列表在 `docs/blog/index.md` 中用 `.zen-post-card` 维护；发布文章时一并添加标题、摘要和日期，并将引用的图片纳入版本控制。
 - 数学公式：全站 MathJax 配置在 `docs/javascripts/extra.js`，通过 `zensical.toml` 的 `extra_javascript` 加载；文章中直接写 `$...$` / `$$...$$`，不要逐页粘贴 MathJax 脚本。
 
 ## 与 AI 协作时的注意点

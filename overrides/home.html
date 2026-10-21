@@ -1,0 +1,69 @@
+{% extends "main.html" %}
+
+{% macro icon(name) %}<span class="zen-icon" aria-hidden="true">{% include ".icons/lucide/" ~ name ~ ".svg" %}</span>{% endmacro %}
+
+{% block content %}
+<div class="zen-home" id="__skip" tabindex="-1">
+  <section class="zen-hero" aria-labelledby="zen-greeting">
+    <div class="zen-hero__orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+    <a class="zen-avatar" href="{{ 'about/' | url }}" aria-label="关于 SegemiPL">
+      <img src="{{ 'assets/identity/avatar.png' | url }}" alt="戴着棒球帽的金毛，SegemiPL 的头像" width="96" height="96" fetchpriority="high">
+      <span class="zen-avatar__status" aria-hidden="true"></span>
+    </a>
+    <p class="zen-hero__hello">Hi, I'm <span>SegemiPL</span> <span class="zen-wave" aria-hidden="true">✳</span></p>
+    <h1 id="zen-greeting">在代码与日常之间<span>，</span><br>留下一点<span class="zen-hero__accent">思考的痕迹</span>。</h1>
+    <p class="zen-hero__intro">清华大学计算机系 24 级本科生<br class="zen-mobile-break"><span class="zen-hero__separator"> · </span>大模型探索中</p>
+    <p class="zen-hero__aside">写代码，读论文，偶尔在方块世界里散步。</p>
+    <div class="zen-socials">
+      <a href="https://github.com/SegemiPL" aria-label="GitHub">{{ icon('github') }}</a>
+      <a href="mailto:zhangpl24@mails.tsinghua.edu.cn" aria-label="给我发邮件">{{ icon('mail') }}</a>
+      <a href="{{ 'about/' | url }}" aria-label="更多关于我">{{ icon('user-round') }}</a>
+      <span></span>
+      <a class="zen-socials__text" href="#notes">翻翻我的笔记 {{ icon('arrow-down') }}</a>
+    </div>
+    <div class="zen-hero__footnote" aria-hidden="true"><span></span>一个不断更新的个人角落<span></span></div>
+  </section>
+
+  <section class="zen-featured" aria-labelledby="zen-featured-title">
+    <div class="zen-section-heading"><h2 id="zen-featured-title">从这里读起<span>Selected notes</span></h2><a href="{{ 'Machine-Learning/' | url }}">更多笔记 {{ icon('arrow-up-right') }}</a></div>
+    <div class="zen-featured-grid">
+      {% for post in page.meta.featured %}
+        <a class="zen-feature-card {% if loop.first %}zen-feature-card--lead{% endif %}" href="{{ post.url | url }}">
+          <div class="zen-feature-card__top"><span>{{ post.category }}</span>{{ icon(post.icon) }}</div>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.description }}</p>
+          <div class="zen-feature-card__bottom"><time>{{ post.date }}</time>{{ icon('arrow-up-right') }}</div>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <div class="zen-home-columns">
+    <section id="notes" class="zen-notebooks" aria-labelledby="zen-notebooks-title">
+      <div class="zen-section-heading"><h2 id="zen-notebooks-title">知识的切片<span>Notebooks</span></h2></div>
+      <div class="zen-notebook-list">
+        {% for notebook in page.meta.notebooks %}
+          <a href="{{ notebook.url | url }}" class="zen-notebook">
+            <span class="zen-notebook__icon">{{ icon(notebook.icon) }}</span>
+            <span><strong>{{ notebook.title }}</strong><small>{{ notebook.description }}</small></span>
+            {{ icon('arrow-up-right') }}
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+    <aside class="zen-home-aside">
+      <section class="zen-now" aria-labelledby="zen-now-title">
+        <div class="zen-section-heading"><h2 id="zen-now-title">此刻<span>Now & then</span></h2>{{ icon('coffee') }}</div>
+        <p class="zen-now__intro">学习之外，也有生活。</p>
+        <ul>
+          <li><span class="zen-now__dot"></span><div>在读与在想<small>大模型、Language Agents</small></div></li>
+          <li>{{ icon('blocks') }}<div>另一个世界<small>Minecraft，想搭什么就搭什么</small></div></li>
+          <li>{{ icon('gamepad-2') }}<div>休息一下<small>旮旯游戏，以及再爬一层塔</small></div></li>
+        </ul>
+        <a class="zen-text-link" href="{{ 'about/' | url }}">再认识我一点 {{ icon('arrow-right') }}</a>
+      </section>
+      <a class="zen-letter" href="mailto:zhangpl24@mails.tsinghua.edu.cn">{{ icon('mail') }}<div><strong>很高兴在这里遇见你</strong><p>有想法，或者只是想打声招呼？</p><span>给我写信 {{ icon('arrow-up-right') }}</span></div></a>
+    </aside>
+  </div>
+</div>
+{% endblock %}

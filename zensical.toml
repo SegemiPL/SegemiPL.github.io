@@ -17,7 +17,7 @@ site_name = "SegemiPL 的博客"
 # meaningful description of the site content for use by search engines.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_description
-site_description = "基于 Zensical 与 GitHub Pages 的个人博客。"
+site_description = "SegemiPL 的个人博客，记录计算机课程笔记、论文阅读与日常思考。"
 
 # The site_author attribute. This is used in the HTML head element.
 #
@@ -50,13 +50,16 @@ Copyright &copy; 2026 SegemiPL
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   { "首页" = "index.md" },
-  { "高性能计算" = "hpc/index.md" },
-  { "编译原理" = "编译原理/index.md" },
-  { "概率统计" = "概统/index.md" },
-  { "机器学习" = "Machine-Learning/index.md" },
-  { "工具" = "tools/index.md" },
-  { "博客" = "blog/index.md" },
+  { "笔记" = [
+    { "高性能计算" = "hpc/index.md" },
+    { "编译原理" = "编译原理/index.md" },
+    { "概率统计" = "概统/index.md" },
+    { "机器学习" = "Machine-Learning/index.md" },
+    { "工具" = "tools/index.md" },
+  ] },
   { "论文阅读" = "Paper/index.md" },
+  { "博客" = "blog/index.md" },
+  { "关于" = "about.md" },
 ]
 
 # With the "extra_css" option you can add your own CSS styling to customize
@@ -103,7 +106,8 @@ custom_dir = "overrides"
 # - https://zensical.org/docs/setup/logo-and-icons/#favicon
 # - https://developer.mozilla.org/en-US/docs/Glossary/Favicon
 #
-#favicon = "images/favicon.png"
+favicon = "assets/identity/favicon.svg"
+logo = "assets/identity/avatar.png"
 
 # Zensical supports more than 60 different languages. This means that the
 # labels and tooltips that Zensical's templates produce are translated.
@@ -184,7 +188,7 @@ features = [
     # This feature turns on navigation elements in the footer that allow the
     # user to navigate to a next or previous page.
     # https://zensical.org/docs/setup/footer/#navigation
-    "navigation.footer",
+    # 页脚使用个人博客样式，不显示主题间的上一页 / 下一页。
 
     # When section index pages are enabled, documents can be directly attached
     # to sections, which is particularly useful for providing overview pages.
@@ -299,15 +303,15 @@ code = "JetBrains Mono"
 # ----------------------------------------------------------------------------
 [[project.theme.palette]]
 scheme = "default"
-primary = "light-blue"
-accent = "cyan"
+primary = "custom"
+accent = "custom"
 toggle.icon = "lucide/sun"
 toggle.name = "切换到深色模式"
 
 [[project.theme.palette]]
 scheme = "slate"
-primary = "deep-purple"
-accent = "purple"
+primary = "custom"
+accent = "custom"
 toggle.icon = "lucide/moon"
 toggle.name = "切换到浅色模式"
 

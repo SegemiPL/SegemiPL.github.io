@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block site_nav %}
+  <div id="zen-navigation">{{ super() }}</div>
+{% endblock %}
+
+{% block footer %}
+  <footer class="zen-footer">
+    <div class="zen-footer__inner">
+      <div>
+        <a class="zen-footer__name" href="{{ nav.homepage.url | url }}">SegemiPL<span>.</span></a>
+        <p>保持好奇，慢慢生长。</p>
+      </div>
+      <div class="zen-footer__links">
+        <a href="{{ 'about/' | url }}">关于我</a>
+        <a href="mailto:zhangpl24@mails.tsinghua.edu.cn">写封邮件 <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/SegemiPL">GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="zen-footer__bottom">
+        <span>© 2026 SegemiPL</span>
+        <span>由 <a href="https://zensical.org/">Zensical</a> 驱动 · 在 GitHub Pages 上生长</span>
+        <a href="{{ config.repo_url }}">站点源码 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </footer>
+{% endblock %}

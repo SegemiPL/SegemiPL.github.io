@@ -1,0 +1,26 @@
+{% set section = namespace(title="随笔", url="blog/") %}
+{% for item in nav.items %}
+  {% if item.children %}
+    {% for child in item.children %}
+      {% if child.url in page.url %}
+        {% set section.title = child.title %}
+        {% set section.url = child.url %}
+      {% endif %}
+    {% endfor %}
+  {% elif item.url and item.url in page.url %}
+    {% set section.title = item.title %}
+    {% set section.url = item.url %}
+  {% endif %}
+{% endfor %}
+<div class="zen-page-meta">
+  <a href="{{ section.url | url }}">{{ section.title }}</a>
+  {% if page.meta.date %}<span aria-hidden="true">/</span><time>{{ page.meta.date }}</time>{% endif %}
+  <span class="zen-reading-time" data-zen-reading-time></span>
+</div>
+{% include "partials/actions.html" %}
+{% if "<h1" not in page.content %}<h1 id="__skip">{{ page.title }}</h1>{% endif %}
+{{ page.content }}
+{% include "partials/tags.html" %}
+{% include "partials/source-file.html" %}
+{% include "partials/feedback.html" %}
+{% include "partials/comments.html" %}
